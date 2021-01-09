@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         if(!userName){
             user = await User.find(); 
         } else {
-            user = await User.find({name: {$regex: '.*' + userName + '.*'}});
+            user = await User.find({name: {$regex: '.*' + userName + '.*', $options: "i"}});
         }        
 
         return res.send({user});
